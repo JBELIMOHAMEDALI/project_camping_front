@@ -16,6 +16,10 @@ export class ListCampingComponent implements OnInit {
   term: any;
   id_projet: string = "-1";
 
+  page = 1;
+  pageSize = 5;
+  pageSizes = [5,10,15];
+
   constructor(private serviceCamping:CampingService,public sahredserv:SharedService,private modalService: NgbModal) { }
 
   ngOnInit() {
@@ -56,6 +60,8 @@ export class ListCampingComponent implements OnInit {
       modalRef.componentInstance.obj = obj;
 
     }
-//
-// 
+    handlePageSizeChange(event: any): void {
+      this.pageSize = event.target.value;
+      this.page = 1;
+    }
 }
