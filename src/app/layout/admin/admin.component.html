@@ -505,7 +505,7 @@
                   </li>
 
 
-                  <li appAccordionLink *ngIf="this.userRole == 'admin'">
+                  <li *ngIf="this.userRole == 'o' " appAccordionLink>
                     <a [routerLink]="['/dashboard/May_camping']" target="_self" appAccordionToggle>
                       <span class="pcoded-micon"><i class="ti-home"></i></span>
                       <span class="pcoded-mtext">Camping Management </span>
@@ -517,6 +517,13 @@
                     <a [routerLink]="['/dashboard/all_camping']" target="_self" appAccordionToggle>
                       <span class="pcoded-micon"><i class="ti-home"></i></span>
                       <span class="pcoded-mtext">All Campings</span>
+                      <span class="pcoded-mcaret"></span>
+                    </a>
+                  </li>
+                  <li appAccordionLink *ngIf="this.userRole == 'admin' "  >
+                    <a [routerLink]="['/dashboard/Reclamtions']" target="_self" appAccordionToggle>
+                      <span class="pcoded-micon"><i class="ti-home"></i></span>
+                      <span class="pcoded-mtext">All Complaints</span>
                       <span class="pcoded-mcaret"></span>
                     </a>
                   </li>

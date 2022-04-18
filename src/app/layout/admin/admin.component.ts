@@ -168,6 +168,7 @@ export class AdminComponent implements OnInit {
     this.setBackgroundPattern('pattern2');
     this.userRole=localStorage.getItem("type");
     this.nom=localStorage.getItem("nomuser");
+
   }
 
   onResize(event) {

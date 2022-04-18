@@ -76,8 +76,8 @@ export class SharedService {
 
   getlogin(email: string, mot_passe: string) {
     let param1 = new HttpParams;
-    param1 = param1.set('email','email1' );//email
-    param1 = param1.set('mot_passe','pass1' );//mot_passe
+    param1 = param1.set('email',email );//email
+    param1 = param1.set('mot_passe',mot_passe );//mot_passe
     return this.httpClient.get(environment.apiUrl+"authentificate", { params: param1 });
   }
 

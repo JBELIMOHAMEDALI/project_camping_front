@@ -28,6 +28,9 @@ import { RecuPaymentComponent } from './pages/participations/recu-payment/recu-p
 import {NgxPrintModule} from 'ngx-print';
 import { AccuComponent } from './pages/accu/accu.component';
 import { RegesterComponent } from './pages/auth/regester/regester.component';
+import { AddReclamtionComponent } from './pages/Reclamtion/add-reclamtion/add-reclamtion.component';
+import { ListReclamtionComponent } from './pages/Reclamtion/list-reclamtion/list-reclamtion.component';
+import { DetaileReclamtionComponent } from './pages/Reclamtion/detaile-reclamtion/detaile-reclamtion.component';
 
 
 
@@ -51,7 +54,10 @@ import { RegesterComponent } from './pages/auth/regester/regester.component';
     AddParticipationPoupupComponent,
     RecuPaymentComponent,
     AccuComponent,
-    RegesterComponent
+    RegesterComponent,
+    AddReclamtionComponent,
+    ListReclamtionComponent,
+    DetaileReclamtionComponent
   ],
   imports: [
     BrowserModule,
@@ -71,7 +77,8 @@ import { RegesterComponent } from './pages/auth/regester/regester.component';
     //DashboardDefaultComponent
   ],
 
-  entryComponents: [PopupComponent,AddUpdateCampingComponent,PoupUpInfoComponent,DeleteAllTabComponent,AddParticipationPoupupComponent],
+  entryComponents: [PopupComponent,AddUpdateCampingComponent,PoupUpInfoComponent,DeleteAllTabComponent,
+    AddParticipationPoupupComponent,DetaileReclamtionComponent],
   schemas: [ NO_ERRORS_SCHEMA ],
   providers: [],
   bootstrap: [AppComponent]

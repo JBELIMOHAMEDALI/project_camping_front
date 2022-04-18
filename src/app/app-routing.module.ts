@@ -10,6 +10,7 @@ import { ListCampingComponent } from "./pages/mang-Camp/list-camping/list-campin
 import { DetaileOneCampingPartComponent } from "./pages/participations/detaile-one-camping-part/detaile-one-camping-part.component";
 import { ListCampComponent } from "./pages/participations/list-camp/list-camp.component";
 import { RecuPaymentComponent } from "./pages/participations/recu-payment/recu-payment.component";
+import { ListReclamtionComponent } from "./pages/Reclamtion/list-reclamtion/list-reclamtion.component";
 import { SimplePageComponent } from "./pages/simple-page/simple-page.component";
 import { ProfileComponent } from "./pages/user/profile/profile.component";
 
@@ -85,7 +86,7 @@ const routes: Routes = [
         path: "profil",
         component: ProfileComponent,
       },
-      // { path: "admin", component: AdminComponent },
+      { path: "Reclamtions", component: ListReclamtionComponent },
       { path: "simple", component: SimplePageComponent },
     ],
   },
