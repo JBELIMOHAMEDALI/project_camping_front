@@ -80,6 +80,16 @@ export class SharedService {
     param1 = param1.set('mot_passe',mot_passe );//mot_passe
     return this.httpClient.get(environment.apiUrl+"authentificate", { params: param1 });
   }
+  getWeather(location) {
+    return this.httpClient.get(
+      'http://api.weatherstack.com/current?access_key=efbaeda5d8b576677f61e19271a4f77c&query=' +
+        location
+    );
+  }
 
+  updateReclmation (object: any) {
+    // alert(JSON.stringify(object))
+    return this.httpClient.put(environment.apiUrl + "upd_reclamtion_rep" , object);
+  }
 
 }

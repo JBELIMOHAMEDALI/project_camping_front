@@ -18,13 +18,33 @@ export class ListReclamtionComponent implements OnInit {
   page = 1;
   pageSize = 5;
   pageSizes = [5,10,15];
+  userRole:string;
 
   constructor(private shared:SharedService,private modalService: NgbModal) { }
 //getAllBayEndPoint
   ngOnInit() {
-    this.getAllBayType("o");
+    this.userRole=localStorage.getItem("type");
+    //alert(this.userRole)
+    if(this.userRole == 'p' || this.userRole == 'o'){
+      this.getReclatmationbayId(this.userRole=localStorage.getItem("id_user").toString());
+    }else{
+      this.getAllBayType("o");
+    }
+   // this.sendToAPIXU("sfax");
+  }
+  getReclatmationbayId(id:string){
+    this.listCampe = [];
+    this.shared.getAllBayEndPoint("reclamtaion_bay_user",id).subscribe({
+      next: (data) => {
+        const donne: any = data;
+         this.listCampe = donne;
+      }, error: (err) => {
+        this.listCampe = [];
+      }
+    })
   }
 getAllBayType(type:string){
+  this.listCampe = [];
 this.shared.getAllBayEndPoint("reclamtaion_all",type).subscribe({
   next: (data) => {
     const donne: any = data;
@@ -38,13 +58,21 @@ openInfo(obj:any){
   const modalRef = this.modalService.open(DetaileReclamtionComponent);
   modalRef.componentInstance.titel = "Details Complaons";
   modalRef.componentInstance.obj = obj;
-
+  modalRef.componentInstance.type_u = this.userRole;
 }
 handlePageSizeChange(event: any): void {
   const v = event.target.value;
   this.listCampe = [];
   this.getAllBayType(v);
 
+}
+
+sendToAPIXU(formValues) {
+  this.shared.getWeather(formValues.location).subscribe(data => {
+    //this.weatherData = data;
+    const donne: any = data;
+    console.log(donne);
+  });
 }
 }
 

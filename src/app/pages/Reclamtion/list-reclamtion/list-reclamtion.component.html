@@ -34,7 +34,7 @@
   <div class="row">
     <div class="col-sm-12">
         <app-card [title]="'List des Projets'">
-            <label for="srch">Research</label>&nbsp;&nbsp;&nbsp;&nbsp;
+            <!-- <label for="srch">Research</label>&nbsp;&nbsp;&nbsp;&nbsp;
             <input id="serch" type="text" [(ngModel)]="term">
             <div style="float: right;margin-right: 700px;">
                 <div class="form-group">
@@ -44,17 +44,57 @@
                       <option value = "p">Participant</option>
                     </select>
                   </div>
+                  <div style="float: right;margin-right: 30px;">
+                    <button type="button" class="btn btn-primary" (click)="open()">Add</button>
+                  </div>
               <br />
               <br />
-            </div>
+            </div> -->
     
-      
+            <div class="row">
+
+
+              <div class="col-md-6 col-lg-5 offset-lg-1">
+                <div class="pcoded-search">
+                  <div class="pcoded-search-box">
+                    <input
+                      type="text"
+                      placeholder="Rechercher"
+                      name="search"
+                      [(ngModel)]="searchText"
+                      autocomplete="off"
+                    />
+                    <span class="search-icon"
+                      ><i class="ti-search" aria-hidden="true"></i
+                    ></span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-md-6 col-lg-3 offset-lg-2">
+                <ng-container *ngIf="this.userRole != 'admin'">
+                    <button type="button" class="btn btn-primary" (click)="open()">Add</button>
+                </ng-container>
+                <div class="input-group">
+                  <ng-container *ngIf="this.userRole == 'admin'">
+                  <select class="form-control" id="exampleFormControlSelect1" (change)="handlePageSizeChange($event)">
+                    <option selected value = "p">type of use</option>
+                    <option value ="o">Organiseur</option>
+                    <option value = "p">Participant</option>
+                  </select>
+                </ng-container>
+                </div>
+              </div>
+              </div>
+
             <div class="table-responsive">
             <table class="table table-dark">
               <thead>
                 <tr>
+                  <ng-container *ngIf="this.userRole == 'admin'">
                   <th scope="col" style="text-align: center;">First Name & Last Name</th>
                   <th scope="col" style="text-align: center;">CIN</th>
+                </ng-container>
                   <th scope="col" style="text-align: center;">date</th>
                   <th scope="col" style="text-align: center;">state</th>
                   <th scope="col" style="text-align: center;">Action</th>
@@ -68,19 +108,21 @@
                     let i = index
                 ">
                 <tr style="text-align: center;">
+                  <ng-container *ngIf="this.userRole == 'admin'">
                   <td>{{item.nom +" "+item.prenom}}</td>
                   <td>{{item.cin}}</td>
+                </ng-container>
                   <td>{{item.created_at}}</td>
                   <td>
                  
-                    <span *ngIf="item.etat_reclamtion==0" style="color: yellow">waiting</span>
-                    <span *ngIf="item.etat_reclamtion ==1"style="color:  green" >in progress</span>
-                    <span *ngIf="item.etat_reclamtion ==2"style="color:  read">refuse</span>
+                    <span *ngIf="item.etat_reclamtion==0" style="color: yellow">In progress</span>
+                    <span *ngIf="item.etat_reclamtion ==1"style="color:  green" >Accepted</span>
+                    <span *ngIf="item.etat_reclamtion ==2"style="color:  red">Refuse</span>
            
 
                   </td>
                   <td> 
-                    <button type="button" class="btn btn-info" (click)="openInfo(item.description_reclamation)" >Details</button>
+                    <button type="button" class="btn btn-info" (click)="openInfo(item)" >Details</button>
                   </td>
                 </tr>
               </tbody>

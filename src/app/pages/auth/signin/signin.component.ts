@@ -21,7 +21,7 @@ export class SigninComponent implements OnInit {
       const donne: any = data;
       const err = donne.error;
       const mayUser = donne;
-      alert(JSON.stringify(mayUser));
+      // alert(JSON.stringify(mayUser));
       if (!err) {
         if (mayUser['type_user'] == 1) {
           const nom_prenom = (donne.nom + " " + donne.prenom).toString();
